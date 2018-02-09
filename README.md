@@ -1,4 +1,4 @@
-# Deep-Q-Learning-Self-Driving-Car
+# Deep Q-Learning Self Driving Car
 
 ### 1. Plan of Attack
   - What is Reinforcement Learning?
