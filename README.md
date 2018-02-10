@@ -162,3 +162,14 @@
   - breaking pattern of sequential experiences, save rare experiences, learn faster in environments with shortage of experience
   - Google DeepMind - Why are we using a uniform distribution to learn from our batch https://arxiv.org/pdf/1511.05952.pdf
 ### 5. Action Selection Policies
+  - Why wouldn't we take the highest Q-Value
+  - Action Selection ϵ-greedy, ϵ-soft(1-ϵ), Softmax
+  - Boils down to exploration vs. exploitation - core of reinforcement learning
+  - Agent keep learning
+  - ϵ-greedy -> select one with best Q-value, except ϵ percent of time (random action, 10% of time for example), less for exploration
+  - ϵ-soft (1-ϵ) -> 10% taking Q-value, 90% random
+  - softmax -> CNN softmax function, got these values 
+  - softmax will take lots of values and squash them between 0 and 1, regardless and will always add up to 1
+  - softmax is useful (Q-value some numbers), range of 0 and 1, probabilities add up to 1, now when action is selected
+  - apply softmax to preserve exploration, softmax can combine the two, distribution (e.g. 90% take Q2, 5% Q1, 2% Q3, 3% Q4)
+  - http://tokic.com/www/tokicm/publikationen/papers/AdaptiveEpsilonGreedyExploration.pdf
