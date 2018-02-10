@@ -120,3 +120,45 @@
   - Q-values and Policy, CS188 Intro to AI UC Berkeley Pacman Project
   - GridWorld - Q-Value
  
+
+## Deep Q-Learning
+
+### 1. Plan of Attack
+  - Deep Q-Learning Intuition (Learning)
+    - Neural Networks Learn, update weights based on input, and Q-Learning
+    - Temporal Difference concepts into Deep Q-Learning
+  - Deep Q-Learning Intuition (Acting)
+    - Decide what action to take depending on state
+  - Experience Replay
+    - Very important addition on top of Deep Q-Learning 
+    - Enable Deep Q-Learning to work properly
+  - Action Selection Policies
+    - Deep Learning agents are able to combine exploration with exploitation
+### 2. Deep Q-Learnig Inuition - Learning
+  - Q-Learning -> Agents, State, Reward, Environment, Feedback loop, Non-Stochastic Policies
+  - Deep Learning -> Add two axis (x1, x2), every state can be described by axis
+  - Now we can feed states into Neural Networks (input layer) process through hidden layer, 4 values (Q1, Q2, Q3, Q4)
+  - Q-Learning -> gets reward from moving, new state -> empirical Q value, ideally be the same, alpha learning rate
+  - Deep Q-Learning -> NN will predict four values (up left, down, right) compare in the previous step, predictive value
+  - Deep learning, NN learn from updating weights -> Q-Target1, Q-Target2, Q-Target3 -> Loss = Σ(Q-Target - Q)^2
+  - Loss to be as close as possible, stochastic gradient descient to take the loss and backpropagated Loss = Σ(Q-Target - Q)^2, update weight of synapses
+  - more and more descriptive of environment (actual q-value, q-target actually observes)
+### 3. Deep Q-Learning Intuition - Acting
+  - pass through softmax function (from output layer) 
+  - best selection best action, highest Q-Value 
+  - Feed in RL Neural Network
+  - Learning from Q-Values backprop
+  - Acting - Softmax and keeps happening
+  - https://medium.com/@awjuliani/simple-reinforcement-learning-with-tensorflow-part-4-deep-q-networks-and-beyond-8438a3e2b8df
+  - Convolution looks at the image, encoding environments state agent as vector (one-hot encoding), encoding
+### 4. Experience Replay
+  - Learning -> new state -> updates weights to get etter
+  - Acting -> Softmax
+  - Experience Replay 
+  - False perception -> Neural Network (turns) -> every consecutive states, biases interdependent states
+  - Experience Replay -> saved into memory before neural network, randomly selects uniformly distributed sample from experiences and learn from (state, action, reward,etc.) passes through network to break sequential nature of bias
+  - valuable rare experience (sharp turns) -> simple neural network, experiences in batches (rolling window)
+  - experience replay gives you more experiences (learn faster)
+  - breaking pattern of sequential experiences, save rare experiences, learn faster in environments with shortage of experience
+  - Google DeepMind - Why are we using a uniform distribution to learn from our batch https://arxiv.org/pdf/1511.05952.pdf
+### 5. Action Selection Policies
