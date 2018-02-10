@@ -63,3 +63,60 @@
 ### 4. The "Plan"
   - The "Plan" - Like a treasure map (replace with arrows vs values)
   - Plan vs Policy (similar but there's a trick, they're stochastic)
+
+### 5. Markov Decision Process (MDP)
+  - Deterministic vs Non-Deterministic search
+  - Deterministic Search -> must go up 100%
+  - Non-deterministic search -> 80%, 10%, 10%, stochastic search -> simulate real-world env. randomness not under control with agent
+  - MDP: a stochastic process has the Markov property -> future states depending on where you are now not how you got there, we don't care how the agent got there, only matter the present state
+  - Framework to do in this environment (MDP) to make decision where to go, just an add on of Bellman equation
+  - V(s) = max(R(s,a) + γV(s')) -> V(s) = max(R(s,a) + γΣP(s, a, s')V(s'))
+  - Probability of s, a, s' -> Stochastic Non-Deterministic Search -> Represent real-world problems.
+  - Applied real-world and really impressive: (fish) http://www.cs.uml.edu/ecg/uploads/AIfall14/MDPApplications3.pdf
+  
+### 6. Policy vs. Plan
+  - Entering the world Stochastic Non-Deterministic Search
+  - Random effects in environment that will effect 
+  - All numbers go down because of randomness (hit walls etc.)
+  - Fire -> 0.9 to 0.39 (because hit the wall or fire pit)
+  - Policy is smarter (moves away from fire, rather hit the wall and have a chance to go left or right, 0% fire)
+  
+### 7. "Living Penalty" 
+  - +1 or -1 (simplistic)
+  - negative reward no matter where agent goes execept (goal + fire pit) incentive to finish game
+  - Policy 0 vs. -0.04. vs. -0.05, -2.0 (so bad, it'll just jump into firepit as less penalty)
+
+### 8. Q-Learning Intuition
+  - V(s) = max(R(s,a) + γΣP(s, a, s')V(s'))
+  - Why is it called Q-Learning?  
+  - Q(s0, a1) -> quality of each action -> Quality vs. Value
+  - Quantifiable value of Q, action leads to state
+  - Q(s,a) = R(s,a) + γΣ(P(s, a, s') max Q(s', a')) 
+  - γΣ(P(s, a, s')V(s')) expected value 
+  - discounted value time, expected value, very similar to V but through possible actions rather than values, find optimal one
+  - One powerful bellman equation
+  - Mathematics: Q-Learning and Q-value Markov Decision Processes: Concepts and Algorithms -> https://pdfs.semanticscholar.org/968b/ab782e52faf0f7957ca0f38b9e9078454afe.pdf
+
+### 9. Temporal Difference
+  - Heart and soul of the Q-Learning algorithm
+  - Lots of recursion going on
+  - TD(a,s) = R(s,a) + γmaxQ(s',a') - Q(s,a)
+  - After (R(s,a) + γmaxQ(s',a')) - Before (Q(s,a)
+  - Ideally should be the same, empirical evidence, no guarantee due to randomness
+  - How to use TD? and why called TD?
+  - Difference is time (before and after) is their a shift in time
+  - Q(s,a) = Q(s,a) + αTD(a, s)
+  - α is alpha, learning rate, how quickly algorithm learning
+  - Q(s,a) = Q_t-1(s,a) + αTD_t(a, s)
+  - What should've been the Q-Value
+  - Q_t(s,a) = Q_t-1(s,a) + α(R(s,a) + γmaxQ(s',a') - Q_t-1(s,a))
+  - alpha if 1 negates Q value, 0 just Q-value
+  - hopefully converge, closely to 0, new calculated value will equal to previous
+  - continue updating Q-Value if environment is changing, optimal policy changes with environment
+  - TD helps agent learn about environment slowly
+  - https://link.springer.com/article/10.1007/BF00115009
+
+### 10. Q-Learning Visualization
+  - Q-values and Policy, CS188 Intro to AI UC Berkeley Pacman Project
+  - GridWorld - Q-Value
+ 
